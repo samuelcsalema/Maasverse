@@ -38,3 +38,5 @@ A seção **Resumos gerais** reúne os quatro documentos enviados na versão est
 - O menu lateral pode ser rolado em celulares menores para acessar Exportar backup e Importar backup.
 - O botão **Importar backup** também fica no cabeçalho mobile, ao lado do título da área atual.
 - Os campos de pesquisa e filtros foram ajustados para telas estreitas, incluindo tabelas e documentos da área Resumos gerais.
+
+Link: https://samuelcsalema.github.io/Maasverse/
