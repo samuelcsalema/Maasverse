@@ -31,4 +31,10 @@ Para seu backup, use **Exportar backup** periodicamente. Importar um backup subs
 
 A seção **Resumos gerais** reúne os quatro documentos enviados na versão estendida: resumos das sagas e livros, personagens e eventos, crossover Maasverse, e mundos/magia/espécies. O conteúdo publicado fica empacotado em `summaries.js`; não é necessário instalar dependências ou configurar um backend.
 
-Link: https://samuelcsalema.github.io/Maasverse/
+## Ajustes de navegação mobile
+
+- Deslize da borda esquerda para a direita por pelo menos **50 px** para abrir o menu lateral.
+- Com o menu aberto, deslize para a esquerda para fechá-lo; tocar fora do menu também o fecha.
+- O menu lateral pode ser rolado em celulares menores para acessar Exportar backup e Importar backup.
+- O botão **Importar backup** também fica no cabeçalho mobile, ao lado do título da área atual.
+- Os campos de pesquisa e filtros foram ajustados para telas estreitas, incluindo tabelas e documentos da área Resumos gerais.

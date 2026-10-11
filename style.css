@@ -39,7 +39,6 @@
 @media(max-width:900px){.toolbar select{flex:1;min-width:130px}.large-cover{width:70px;height:100px}}
 @media(max-width:560px){.toolbar select{flex-basis:100%;width:100%}.mini-cover{width:44px;height:61px}.large-cover{width:74px;height:106px}.source-book-row{align-items:flex-start}.source-book-row .small-btn{padding:6px}}
 
-
 /* Resumos gerais: documentos Markdown integrados ao Codex */
 .summary-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}
 .summary-tabs button{border:1px solid var(--line);border-radius:9px;background:#151b29;color:#aab2c2;padding:10px 13px;font-size:11px;line-height:1.4}
