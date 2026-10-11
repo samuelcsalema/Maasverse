@@ -18,36 +18,37 @@
   </head>
   <body>
     <aside id="sidebar">
-      <a class="brand">
-        <i class="fa-solid fa-moon"></i>
-        <span>MAASVERSE<small>CODEX PESSOAL</small></span></a>
+      <a class="brand"
+        ><i class="fa-solid fa-moon"></i
+        ><span>MAASVERSE<small>CODEX PESSOAL</small></span></a
+      >
       <p class="eyebrow">BIBLIOTECA</p>
       <nav>
         <button data-view="overview" class="active">
-          <i class="fa-solid fa-compass"></i> Visão geral</button>
-          <button data-view="books">
-          <i class="fa-solid fa-book-open"></i> Meus livros</button>
-          <button data-view="characters">
-          <i class="fa-solid fa-user-astronaut"></i> Personagens</button>
-          <button data-view="magic">
-          <i class="fa-solid fa-wand-sparkles"></i> Magias & poderes</button>
-          <button data-view="artifacts">
-          <i class="fa-solid fa-gem"></i> Artefatos</button>
-          <button data-view="timeline">
-          <i class="fa-solid fa-timeline"></i> Linha do tempo</button>
-          <button data-view="relations">
+          <i class="fa-solid fa-compass"></i> Visão geral</button
+        ><button data-view="books">
+          <i class="fa-solid fa-book-open"></i> Meus livros</button
+        ><button data-view="summaries">
+          <i class="fa-solid fa-file-lines"></i> Resumos gerais</button
+        ><button data-view="characters">
+          <i class="fa-solid fa-user-astronaut"></i> Personagens</button
+        ><button data-view="magic">
+          <i class="fa-solid fa-wand-sparkles"></i> Magias & poderes</button
+        ><button data-view="artifacts">
+          <i class="fa-solid fa-gem"></i> Artefatos</button
+        ><button data-view="timeline">
+          <i class="fa-solid fa-timeline"></i> Linha do tempo</button
+        ><button data-view="relations">
           <i class="fa-solid fa-diagram-project"></i> Conexões
-          <button data-view="summaries">
-          <i class="fa-solid fa-file-lines"></i> Resumos gerais</button>
         </button>
       </nav>
       <div class="side-bottom">
         <p class="muted">● Dados salvos neste navegador</p>
         <button id="export">
-          <i class="fa-solid fa-download"></i> Exportar backup</button>
-          <button id="import">
-          <i class="fa-solid fa-upload"></i> Importar backup</button>
-          <input
+          <i class="fa-solid fa-download"></i> Exportar backup</button
+        ><button id="import">
+          <i class="fa-solid fa-upload"></i> Importar backup</button
+        ><input
           id="backupFile"
           type="file"
           accept="application/json,.json"
@@ -55,12 +56,37 @@
         />
       </div>
     </aside>
+    <div
+      id="sidebarBackdrop"
+      class="sidebar-backdrop"
+      hidden
+      aria-hidden="true"
+    ></div>
     <main>
       <header>
-        <button id="menu" class="icon mobile">
-          <i class="fa-solid fa-bars"></i></button>
-          <span class="crumb">MAASVERSE　›　<b id="crumb">Visão geral</b></span>
-          <input id="globalSearch" placeholder="Buscar no Codex... (Enter)" />
+        <button
+          id="menu"
+          class="icon mobile"
+          type="button"
+          aria-label="Abrir menu lateral"
+          aria-expanded="false"
+          title="Menu"
+        >
+          <i class="fa-solid fa-bars"></i></button
+        ><span class="crumb">MAASVERSE　›　<b id="crumb">Visão geral</b></span
+        ><input
+          id="globalSearch"
+          placeholder="Buscar no Codex... (Enter)"
+          aria-label="Buscar no Codex"
+        /><button
+          id="quickImport"
+          class="quick-import"
+          type="button"
+          title="Importar backup"
+          aria-label="Importar backup"
+        >
+          <i class="fa-solid fa-upload"></i><span>Importar backup</span>
+        </button>
       </header>
       <section class="view active" id="view-overview">
         <div class="hero">

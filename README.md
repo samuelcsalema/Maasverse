@@ -30,3 +30,5 @@ Para seu backup, use **Exportar backup** periodicamente. Importar um backup subs
 ## Resumos gerais
 
 A seção **Resumos gerais** reúne os quatro documentos enviados na versão estendida: resumos das sagas e livros, personagens e eventos, crossover Maasverse, e mundos/magia/espécies. O conteúdo publicado fica empacotado em `summaries.js`; não é necessário instalar dependências ou configurar um backend.
+
+Link: https://samuelcsalema.github.io/Maasverse/

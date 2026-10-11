@@ -75,3 +75,64 @@
 .summary-content a{color:#7dd3fc;text-decoration-color:#38bdf866}
 @media(max-width:800px){.summary-shell{grid-template-columns:1fr}.summary-index{position:static;max-height:250px}.summary-index a{display:inline-block;max-width:100%;margin:2px}.summary-index .toc-level-3{padding-left:8px}.summary-content h2{font-size:19px}}
 @media(max-width:560px){.summary-tabs{display:grid;grid-template-columns:1fr 1fr}.summary-tabs button{padding:9px;font-size:10px}.summary-paper{padding:14px}.summary-content{font-size:12px}.summary-content th,.summary-content td{padding:7px 8px}}
+
+/* Melhorias de acessibilidade, navegação e uso em telas pequenas */
+.sidebar-backdrop{display:none}
+.sidebar-backdrop[hidden]{display:none}
+.quick-import{display:none;align-items:center;justify-content:center;gap:7px;border:1px solid #8b5cf655;border-radius:9px;background:#7c3aed20;color:#d8ccff;padding:9px 11px;font-size:11px;white-space:nowrap}
+.quick-import:hover{background:#7c3aed35;border-color:#8b5cf6}
+header .icon{position:static}
+#sidebar{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#3b315d transparent}
+#sidebar .side-bottom{padding-bottom:max(8px, env(safe-area-inset-bottom))}
+@media(max-width:800px){
+  body.sidebar-open{overflow:hidden;touch-action:pan-y}
+  #sidebar{width:min(290px,86vw);max-height:100dvh;overflow-y:auto;padding-top:max(18px,env(safe-area-inset-top));padding-bottom:max(14px,env(safe-area-inset-bottom));z-index:51}
+  #sidebar .brand{padding-bottom:18px}
+  #sidebar nav{gap:3px}
+  #sidebar nav button,#sidebar .side-bottom button{min-height:40px;padding:10px 12px}
+  .sidebar-backdrop{display:block;position:fixed;inset:0;background:#03060bd9;backdrop-filter:blur(2px);z-index:50;touch-action:pan-y}
+  .sidebar-backdrop[hidden]{display:none}
+  main{min-width:0;width:100%;padding-left:clamp(12px,3vw,20px);padding-right:clamp(12px,3vw,20px)}
+  header{height:auto;min-height:64px;padding:11px 0;display:grid;grid-template-columns:38px minmax(0,1fr) 40px;grid-template-areas:"menu crumb import" "search search search";gap:9px;align-items:center}
+  #menu{grid-area:menu;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:#151b29;color:#e2e8f0;padding:0}
+  .crumb{grid-area:crumb;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:9px}
+  header #globalSearch{grid-area:search;width:100%;max-width:none;margin:0;min-height:42px;font-size:16px}
+  header #quickImport{grid-area:import;display:flex;width:40px;height:38px;padding:0;font-size:0;gap:0}
+  header #quickImport i{font-size:14px}
+  .view{padding-top:20px}
+  .intro h1{font-size:clamp(25px,6vw,31px);overflow-wrap:anywhere}
+  .hero{position:relative;min-width:0}
+  .hero>div{max-width:100%}
+  .stats article{min-width:0;overflow-wrap:anywhere}
+  .book-card,.lore-card,.relation-card,.panel{min-width:0}
+  .timeline-entry{min-width:0}
+  .event{min-width:0;overflow-wrap:anywhere}
+  .summary-shell,.summary-paper,.summary-content{min-width:0;max-width:100%}
+  .summary-index{max-width:100%;overflow-x:hidden}
+  .summary-index a{white-space:normal;overflow-wrap:anywhere}
+  input,select,textarea,button{max-width:100%}
+}
+@media(max-width:560px){
+  main{padding-left:11px;padding-right:11px}
+  .hero{padding:22px 16px}
+  .heading{align-items:flex-start;gap:8px}
+  .heading h2{font-size:18px}
+  .toolbar{gap:7px}
+  .toolbar input,.toolbar select{font-size:16px;min-height:42px}
+  .toolbar select{min-width:0;max-width:100%}
+  .form-actions button,.book-actions button{min-height:38px}
+  .event-date{font-size:9px;overflow-wrap:anywhere}
+  .timeline-entry{grid-template-columns:48px 8px minmax(0,1fr);gap:6px}
+  .event-form textarea{width:100%;min-height:70px}
+  .summary-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .summary-paper{padding:12px}
+  .summary-content{font-size:12px;line-height:1.75}
+  .summary-content pre{max-width:100%;overflow-x:auto}
+  footer{overflow-wrap:anywhere}
+}
+@media(max-height:720px) and (max-width:800px){
+  #sidebar{padding-top:12px;padding-bottom:10px}
+  #sidebar .brand{padding-bottom:12px}
+  #sidebar .eyebrow{margin:6px 10px}
+  #sidebar nav button,#sidebar .side-bottom button{min-height:36px;padding:8px 10px}
+}
