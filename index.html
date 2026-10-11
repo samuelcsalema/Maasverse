@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b0f19" />
+    <title>Maasverse Codex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <aside id="sidebar">
+      <a class="brand">
+        <i class="fa-solid fa-moon"></i>
+        <span>MAASVERSE<small>CODEX PESSOAL</small></span></a>
+      <p class="eyebrow">BIBLIOTECA</p>
+      <nav>
+        <button data-view="overview" class="active">
+          <i class="fa-solid fa-compass"></i> Visão geral</button>
+          <button data-view="books">
+          <i class="fa-solid fa-book-open"></i> Meus livros</button>
+          <button data-view="characters">
+          <i class="fa-solid fa-user-astronaut"></i> Personagens</button>
+          <button data-view="magic">
+          <i class="fa-solid fa-wand-sparkles"></i> Magias & poderes</button>
+          <button data-view="artifacts">
+          <i class="fa-solid fa-gem"></i> Artefatos</button>
+          <button data-view="timeline">
+          <i class="fa-solid fa-timeline"></i> Linha do tempo</button>
+          <button data-view="relations">
+          <i class="fa-solid fa-diagram-project"></i> Conexões
+          <button data-view="summaries">
+          <i class="fa-solid fa-file-lines"></i> Resumos gerais</button>
+        </button>
+      </nav>
+      <div class="side-bottom">
+        <p class="muted">● Dados salvos neste navegador</p>
+        <button id="export">
+          <i class="fa-solid fa-download"></i> Exportar backup</button>
+          <button id="import">
+          <i class="fa-solid fa-upload"></i> Importar backup</button>
+          <input
+          id="backupFile"
+          type="file"
+          accept="application/json,.json"
+          hidden
+        />
+      </div>
+    </aside>
+    <main>
+      <header>
+        <button id="menu" class="icon mobile">
+          <i class="fa-solid fa-bars"></i></button>
+          <span class="crumb">MAASVERSE　›　<b id="crumb">Visão geral</b></span>
+          <input id="globalSearch" placeholder="Buscar no Codex... (Enter)" />
+      </header>
+      <section class="view active" id="view-overview">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">✦ SEU ARQUIVO DO UNIVERSO</p>
+            <h1>Entre nas histórias.<br /><em>Guarde suas descobertas.</em></h1>
+            <p>
+              Seu espaço pessoal para acompanhar leituras, desbloquear
+              revelações aos poucos e explorar as conexões do Maasverse — no seu
+              ritmo.
+            </p>
+            <button class="primary" data-go="books">
+              Continuar leitura　<i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+          <i class="hero-moon fa-solid fa-moon"></i>
+        </div>
+        <div class="heading">
+          <div>
+            <p class="eyebrow">SEU PROGRESSO</p>
+            <h2>O seu caminho até aqui</h2>
+          </div>
+          <small id="bookCount"></small>
+        </div>
+        <div class="stats">
+          <article>
+            Livros na biblioteca<strong id="statBooks">0</strong>
+          </article>
+          <article>Em andamento<strong id="statReading">0</strong></article>
+          <article>Avaliação média<strong id="statRating">—</strong></article>
+          <article>Anotações pessoais<strong id="statNotes">0</strong></article>
+        </div>
+        <div class="columns">
+          <section class="panel">
+            <h3>✦ Retomar leitura</h3>
+            <div id="continueReading"></div>
+          </section>
+          <section class="panel">
+            <h3>✧ Últimas anotações</h3>
+            <div id="recentNotes"></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h3>Explorar por série</h3>
+          <div id="seriesGrid" class="series-grid"></div>
+        </section>
+      </section>
+      <section class="view" id="view-books">
+        <div class="intro">
+          <p class="eyebrow">BIBLIOTECA PESSOAL</p>
+          <h1>Meus livros</h1>
+          <p>
+            Registre seu progresso, avalie suas leituras e mantenha suas
+            impressões por perto.
+          </p>
+        </div>
+        <div class="toolbar">
+          <input id="bookSearch" placeholder="Buscar livro..." /><select
+            id="seriesFilter"
+          >
+            <option value="">Todas as séries</option></select
+          ><select id="statusFilter">
+            <option value="">Todos os status</option>
+            <option value="reading">Em andamento</option>
+            <option value="completed">Concluído</option>
+            <option value="want">Quero ler</option>
+            <option value="unstarted">Não iniciado</option>
+          </select>
+        </div>
+        <div id="booksGrid" class="cards"></div>
+      </section>
+      <section class="view" id="view-summaries">
+        <div class="intro">
+          <p class="eyebrow">CADERNO DE REFERÊNCIA</p>
+          <h1>Resumos gerais</h1>
+          <p>
+            Os quatro documentos da versão estendida reunidos em um só lugar:
+            resumos dos livros, personagens e eventos, crossover, mundos e
+            magia. O conteúdo pode conter spoilers extensos.
+          </p>
+        </div>
+        <div
+          id="summaryTabs"
+          class="summary-tabs"
+          role="tablist"
+          aria-label="Documentos de resumo"
+        ></div>
+        <div class="summary-heading">
+          <h2 id="summaryDocTitle"></h2>
+          <p id="summaryDocDescription"></p>
+        </div>
+        <div class="summary-shell">
+          <aside
+            class="summary-index"
+            id="summaryIndex"
+            aria-label="Índice do documento"
+          ></aside>
+          <article class="summary-paper">
+            <div id="summaryContent" class="summary-content"></div>
+          </article>
+        </div>
+      </section>
+      <section class="view" id="view-characters">
+        <div class="intro">
+          <p class="eyebrow">ENCICLOPÉDIA</p>
+          <h1>Personagens</h1>
+          <p>
+            Fichas que evoluem conforme você avança nos livros, com filtros por
+            saga e volume.
+          </p>
+        </div>
+        <div class="toolbar">
+          <input
+            class="loreSearch"
+            data-type="characters"
+            placeholder="Buscar personagem..."
+          /><select class="loreSeries" data-type="characters"></select
+          ><select class="loreBook" data-type="characters"></select
+          ><select class="loreSpoilers" data-type="characters">
+            <option value="progress">Revelações conforme meu progresso</option>
+            <option value="all">Mostrar tudo (spoilers)</option>
+          </select>
+        </div>
+        <div id="charactersGrid" class="cards"></div>
+      </section>
+      <section class="view" id="view-magic">
+        <div class="intro">
+          <p class="eyebrow">SISTEMAS & HABILIDADES</p>
+          <h1>Magias & poderes</h1>
+          <p>
+            Sistemas mágicos, habilidades e revelações desbloqueadas conforme
+            sua leitura.
+          </p>
+        </div>
+        <div class="toolbar">
+          <input
+            class="loreSearch"
+            data-type="magic"
+            placeholder="Buscar magia ou poder..."
+          /><select class="loreSeries" data-type="magic"></select
+          ><select class="loreBook" data-type="magic"></select
+          ><select class="loreSpoilers" data-type="magic">
+            <option value="progress">Revelações conforme meu progresso</option>
+            <option value="all">Mostrar tudo (spoilers)</option>
+          </select>
+        </div>
+        <div id="magicGrid" class="cards"></div>
+      </section>
+      <section class="view" id="view-artifacts">
+        <div class="intro">
+          <p class="eyebrow">RELICÁRIOS</p>
+          <h1>Artefatos</h1>
+          <p>
+            Objetos lendários e detalhes progressivos, com filtros por saga e
+            livro.
+          </p>
+        </div>
+        <div class="toolbar">
+          <input
+            class="loreSearch"
+            data-type="artifacts"
+            placeholder="Buscar artefato..."
+          /><select class="loreSeries" data-type="artifacts"></select
+          ><select class="loreBook" data-type="artifacts"></select
+          ><select class="loreSpoilers" data-type="artifacts">
+            <option value="progress">Revelações conforme meu progresso</option>
+            <option value="all">Mostrar tudo (spoilers)</option>
+          </select>
+        </div>
+        <div id="artifactsGrid" class="cards"></div>
+      </section>
+      <section class="view" id="view-timeline">
+        <div class="intro">
+          <p class="eyebrow">REGISTRO DE DESCOBERTAS</p>
+          <h1>Linha do tempo integrada</h1>
+          <p>
+            Eventos das três sagas em um único fluxo, com personagens, elementos
+            recorrentes e conexões entre livros. A ordem é aproximada quando a
+            fonte não informa datas canônicas.
+          </p>
+        </div>
+        <div class="toolbar">
+          <select id="timelineSeries">
+            <option value="">Todas as sagas</option></select
+          ><select id="timelineBook">
+            <option value="">Todos os livros</option></select
+          ><select id="timelineSpoilers">
+            <option value="progress">Exibir até meu progresso</option>
+            <option value="all">Mostrar tudo (spoilers)</option>
+          </select>
+        </div>
+        <div id="timelineList"></div>
+      </section>
+      <section class="view" id="view-relations">
+        <div class="intro">
+          <p class="eyebrow">MAPA DO UNIVERSO</p>
+          <h1>Conexões</h1>
+          <p>
+            Explore entidades recorrentes e relações registradas entre livros e
+            sagas.
+          </p>
+        </div>
+        <div class="toolbar">
+          <select id="relationSeries">
+            <option value="">Todas as sagas</option></select
+          ><select id="relationBook">
+            <option value="">Todos os livros</option></select
+          ><input id="relationSearch" placeholder="Buscar conexão..." />
+        </div>
+        <div id="relationsGrid" class="cards"></div>
+      </section>
+      <footer>
+        ✦ MAASVERSE CODEX
+        <span>Feito para acompanhar suas leituras, sem backend.</span>
+      </footer>
+    </main>
+    <div class="backdrop" id="backdrop" hidden>
+      <section class="modal">
+        <button id="closeModal" class="icon close">✕</button>
+        <div id="modalContent"></div>
+      </section>
+    </div>
+    <div id="toasts"></div>
+    <script src="data.js"></script>
+    <script src="summaries.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
